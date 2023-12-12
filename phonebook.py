@@ -156,6 +156,20 @@ def update_contact():
     
     with open('simbook.txt', 'w', encoding='utf-8') as f:
         f.write('\n'.join(contacts_list_lines))
+        
+def del_contact():
+
+    with open('simbook.txt', 'r', encoding='utf-8') as file:
+        contacts_list = file.read()
+    print(contacts_list)
+    print('')
+    index_delete_file = int(input('Введите номер строки для удаления: ')) - 1
+    contacts_list_lines = contacts_list.split('\n')
+    del_contacts_list_lines = contacts_list_lines[index_delete_file]
+    contacts_list_lines.pop(index_delete_file)
+    print(f'Удалена запись: {del_contacts_list_lines}\n')
+    with open('simbook.txt', 'w', encoding='utf-8') as file:
+        file.write('\n'.join(contacts_list_lines))
 
 def interface():
     with open('phonebook.txt', 'a'):
